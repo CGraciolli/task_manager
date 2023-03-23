@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+<div class="col-6 justify-content-center">
+    <h2>Sign Up</h2>
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        <div>
+            <label class="inline-block">Username:</label><br>
+            {{form.username}}
+        </div>
+        <div>
+            <label class="inline-block">Email:</label><br>
+            {{form.email}}
+        </div>
+        <div>
+            <label class="inline-block">Password:</label><br>
+            {{form.password1}}
+        </div>
+        <div>
+            <label class="inline-block">Confirm password:</label><br>
+            {{form.password2}}
+        </div>
+
+        {% if form.errors or form.non_field_errors %}
+            <div>
+                {% for field in forms %}
+                    {{field.errors}}
+                {% endfor %}
+                {{form.non_field_errors}}
+            </div>
+        {% endif %}
+        
+        <button class="btn">Submit</button>
+    </form>
+</div>
+{% endblock %}

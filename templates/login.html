@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block content %}
+<div class="col-6 justify-content-center">
+    <h2>Log In</h2>
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        <div>
+            <label class="inline-block">Username:</label><br>
+            {{form.username}}
+        </div>
+        <div>
+            <label class="inline-block">Password:</label><br>
+            {{form.password}}
+        </div>
+
+        {% if form.errors or form.non_field_errors %}
+            <div>
+                {% for field in forms %}
+                    {{field.errors}}
+                {% endfor %}
+                {{form.non_field_errors}}
+            </div>
+        {% endif %}
+        <button class="btn">Submit</button>
+    </form>
+</div>
+{% endblock %}
