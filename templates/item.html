@@ -13,7 +13,7 @@
     <h5>Due Date: {{item.due_date}}</h5>
     <h5>{{item.is_completed}}</h5>
 </div>
-<a class="btn" href="">Edit</a>
-<a class="btn" href="">Delete</a>
+<a class="btn" href="{% url 'task:edit' item.id %}">Edit</a>
+<a class="btn" href="{% url 'task:delete' item.id %}">Delete</a>
 {% endif %}
 {% endblock %}

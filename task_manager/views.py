@@ -1,8 +1,13 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
+from task.models import Task
 
 def tasks(request):
-    return render(request, "tasks.html", {})
+    if request.user.is_authenticated:
+        tasks = Task.objects.filter(user = request.user)
+    else:
+        tasks = []
+    return render(request, "tasks.html", {"tasks": tasks})
 
 def item(request):
     return render(request, "item.html", {})
@@ -17,3 +22,4 @@ def signup(request):
         form = SignUpForm()
 
     return render(request, "signup.html", {"form": form})
+

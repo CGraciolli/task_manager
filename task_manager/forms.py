@@ -37,3 +37,4 @@ class LogInForm(AuthenticationForm):
         'placeholder': 'Your Password',
         'class': 'rounded border-0 col-6',
         }))  
+    
